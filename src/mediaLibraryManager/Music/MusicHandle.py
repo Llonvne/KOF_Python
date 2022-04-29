@@ -1,3 +1,6 @@
+import pygame
+
+
 class MusicHandle:
     """
     MusicHandle
@@ -9,18 +12,18 @@ class MusicHandle:
     """
 
     def __init__(self, music_path):
+        if pygame.mixer.get_init() is None:
+            pygame.mixer.init()
         """以音乐文件路径初始化对象，初始化播放头为开始"""
+        self.music_path = music_path
+        self.controller = pygame.mixer.Sound(music_path)
         pass
-        
-    def play():
+
+    def play(self):
         """播放音乐，从播放头开始播放"""
+        self.controller.play()
         pass
 
-    def pause():
-        """暂停播放，播放头不变"""
-        pass
-
-    def stop():
+    def stop(self):
         """停止播放，播放头为开始"""
-        pass
-
+        self.controller.fadeout(100)

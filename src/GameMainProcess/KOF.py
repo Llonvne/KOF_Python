@@ -2,6 +2,8 @@
 import pygame
 
 from src.config import Config
+from src import events
+from src.mediaLibraryManager.Music.BGMService import BGMService
 
 
 class KOF:
@@ -9,19 +11,17 @@ class KOF:
         # 初始化 pygame
         pygame.init()
         # 初始化 config
-        config = Config()
+        self.config = Config()
         # 设置标题
-        pygame.display.set_caption(config.caption)
+        pygame.display.set_caption(self.config.caption)
         # 设置 screen_logo
-        pygame.display.set_icon(config.screen_logo.pygamePic())
+        pygame.display.set_icon(self.config.screen_logo.pygamePic())
         # 设置 screen 属性
-        self.screen = pygame.display.set_mode(config.screen_size)
+        self.screen = pygame.display.set_mode(self.config.screen_size)
         # 播放BGM
-        music = config.mediaLibrary.getMusicHandle("BGM1")
-        music.play()
+        self.config.bgmService.play()
 
-    @staticmethod
-    def run():
+    def run(self):
         # 运行结束标记符号
         running = True
         while running:
@@ -30,3 +30,5 @@ class KOF:
                 # 如果按下了退出按钮
                 if event.type == pygame.QUIT:
                     running = False
+                elif event.type == events.MUSIC_END:
+                    self.config.bgmService.play()

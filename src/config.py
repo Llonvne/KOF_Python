@@ -5,6 +5,7 @@ import os
 
 # 导入外部资源管理器
 import mediaLibraryManager.MediaLibraryManager as mlib
+from src.mediaLibraryManager.Music.BGMService import BGMService
 
 
 class Config:
@@ -17,6 +18,8 @@ class Config:
         self.mediaLibraryRoot = os.path.join(os.pardir, "MediaLibrary")
         # 初始化外部资源管理器
         self.mediaLibrary = mlib.MediaLibrayManager(self)
+        # 初始化BGM服务
+        self.bgmService = BGMService(self.mediaLibrary)
 
         # 标题
         self.caption = "拳皇 KOF"
@@ -30,3 +33,4 @@ class Config:
 
         # 屏幕分辨率
         self.screen_size = (1280, 720)
+

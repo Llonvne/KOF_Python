@@ -1,8 +1,6 @@
 # KOF_Python | 拳皇 Python
 
-```
-Python课程设计大作业
-```
+进度同步脑图：https://shimo.im/mindmaps/vVAXVjEVK0fEJ9qm/
 
 ### Authors: Llonvne 
 

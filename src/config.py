@@ -1,6 +1,8 @@
 """
 config: KOF 关键参数配置目录
 """
+import os
+
 # 导入外部资源管理器
 import mediaLibraryManager.MediaLibraryManager as mlib
 
@@ -12,12 +14,12 @@ class Config:
         # 指定允许的音频后缀
         self.ALLOWED_MUSIC_EXTENSIONS = {'mp3'}
         # 指定外部资源管理器根目录
-        self.mediaLibraryRoot = "../MediaLibrary"
+        self.mediaLibraryRoot = os.path.join(os.pardir, "MediaLibrary")
         # 初始化外部资源管理器
         self.mediaLibrary = mlib.MediaLibrayManager(self)
 
         # 标题
-        self.caption = "拳皇 In Python"
+        self.caption = "拳皇 KOF"
 
         # 窗口Logo
         """

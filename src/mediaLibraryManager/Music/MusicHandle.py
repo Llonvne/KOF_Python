@@ -23,6 +23,8 @@ class MusicHandle:
     def play(self):
         """播放音乐，从播放头开始播放"""
         if self.controller is None:
+            if pygame.mixer.get_init() is None:
+                pygame.mixer.init()
             self.controller = pygame.mixer.Sound(self.music_path)
         self.controller.play()
         pass
@@ -30,5 +32,7 @@ class MusicHandle:
     def stop(self):
         """停止播放，播放头为开始"""
         if self.controller is None:
+            if pygame.mixer.get_init() is None:
+                pygame.mixer.init()
             self.controller = pygame.mixer.Sound(self.music_path)
         self.controller.fadeout(100)

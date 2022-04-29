@@ -5,7 +5,7 @@ def get_files(filepath: str) -> dict:
     pathToName = dict()
     for filepath, dirnames, filenames in os.walk(filepath):
         for filename in filenames:
-            pathToName[os.path.join(filepath,filename)] = filename
+            pathToName[os.path.join(filepath, filename)] = filename
     return pathToName
 
 

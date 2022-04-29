@@ -1,7 +1,8 @@
-import pygameHandler.PygameHandler as pygameHandler
+# 加载游戏主类
+from GameMainProcess.KOF import KOF
 
-process = pygameHandler.PygameHandler()
-process.run()
-
-
+# 获得游戏实例
+mainProcess = KOF()
+# 显示界面
+mainProcess.run()
 

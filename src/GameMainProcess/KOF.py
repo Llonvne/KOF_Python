@@ -1,12 +1,15 @@
 # 导入 pygame 和 config
 import pygame
-from src import config
+
+from src.config import Config
 
 
-class PygameHandler:
+class KOF:
     def __init__(self):
         # 初始化 pygame
         pygame.init()
+        # 初始化 config
+        config = Config()
         # 设置标题
         pygame.display.set_caption(config.caption)
         # 设置 screen_logo
@@ -17,7 +20,8 @@ class PygameHandler:
         music = config.mediaLibrary.getMusicHandle("BGM1")
         music.play()
 
-    def run(self):
+    @staticmethod
+    def run():
         # 运行结束标记符号
         running = True
         while running:

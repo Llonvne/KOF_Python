@@ -6,6 +6,7 @@ from src.scene.scene import Scene
 
 class startMenu(Scene):
     def display(self):
+
         # 调用资源管理器中的背景图片
         Background = self.KOF.mediaLibrary.PicLibrary['KOF_StarBG1'].pygamePic()
         Gobutton = self.KOF.mediaLibrary.PicLibrary['GO2'].pygamePic()
@@ -18,9 +19,15 @@ class startMenu(Scene):
         pass
 
     def clear(self):
+        self.KOF.screen.fill((0,0,0))
         pass
 
     def event(self, event):
+        # 用于获取鼠标的坐标，触发范围为（100，50）-（400，247）
+        ball_x, ball_y = pygame.mouse.get_pos()
+        if 100 <= ball_x <= 400 and 50 <= ball_y <= 247 :
+            self.clear()
+            self.next()
         if event.type == constants.ST_STRAT:
             self.display()
         pass

@@ -3,9 +3,9 @@
 """
 
 # 加载游戏主类
-from GameMainProcess.KOF import KOF
+from KOF.KOF import KOF
 # 获得游戏实例
-mainProcess = KOF()
+KOFmain = KOF()
 # 显示界面
-mainProcess.run()
+KOFmain.run()
 

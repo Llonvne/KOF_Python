@@ -26,12 +26,12 @@ class startMenu(Scene):
     def event(self, event):
         # 用于获取鼠标的坐标，触发范围为（100，50）-（400，247）
         ball_x, ball_y = pygame.mouse.get_pos()
-        if 100 <= ball_x <= 400 and 50 <= ball_y <= 247 :
+        mousepos=pygame.mouse.get_pressed()
+        if 100 <= ball_x <= 400 and 50 <= ball_y <= 247 and mousepos[0]==1:
             self.clear()
             self.next()
         if event.type == constants.ST_STRAT:
             self.display()
-            pygame.time.delay(3000)
         pass
 
     def next(self):

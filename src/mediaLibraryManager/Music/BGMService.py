@@ -15,13 +15,14 @@ class BGMService:
         """
         传入 MusicHandle 列表，初始化BGM队列
         """
-        pygame.mixer.music.load(mediaLibraryManager.MusicLibrary['BGM1'].music_path)
+        self.mediaLibraryManager = mediaLibraryManager
         pygame.mixer.music.set_endevent(events.MUSIC_END)
 
-    def play(self):
+    def play(self, musicName):
         """
         循环播放，列表内音乐
         """
+        pygame.mixer.music.load(self.mediaLibraryManager.MusicLibrary[musicName].music_path)
         pygame.mixer.music.play(1)
         pass
 

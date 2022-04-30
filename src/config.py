@@ -25,12 +25,10 @@ class Config:
         self.caption = "拳皇 KOF"
 
         # 窗口Logo
-        """
-        logo_path 用于指定logo位置，MediaLibaray读取该参数以加载
-        """
         self.logo_name = "KOF_ScreenLogo"
         self.screen_logo = self.mediaLibrary.getScreenLogo()
 
         # 屏幕分辨率
         self.screen_size = (1280, 720)
+
 

@@ -12,9 +12,7 @@ class MediaLibrayManager:
         """
         加载所有图片，以PicHandle类保存在 PicLibrary
         加载所有音乐，以MusicHandle类保存在 MusicLibrary
-        初始化BGMService
         """
-        # 保存 configure 引用
         self.KOF = KOF
 
         # 加载所有图片

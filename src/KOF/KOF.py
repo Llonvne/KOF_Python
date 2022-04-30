@@ -4,7 +4,6 @@ import pygame
 from src.configure import constants
 from src.mediaLibraryManager.MediaLibraryManager import MediaLibrayManager
 from src.mediaLibraryManager.Music.BGMService import BGMService
-from src.scene.scenes.endMenu.EndMenu import EndMenu
 
 
 class KOF:

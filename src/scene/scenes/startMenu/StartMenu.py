@@ -32,7 +32,6 @@ class startMenu(Scene):
         if event.type == constants.ST_STRAT:
             self.display()
             pygame.time.delay(3000)
-            self.next()
         pass
 
     def next(self):

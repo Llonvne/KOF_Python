@@ -56,7 +56,5 @@ class KOF:
                 if event.type == constants.ST_NEXT:
                     nowScene = choose
                     choose = ChooseChar(self)
-                if self.eventsManager.isCustom(event):
-                    nowScene.event(event)
-
+                nowScene.event(event)
             pygame.display.flip()  # 更新屏幕内容

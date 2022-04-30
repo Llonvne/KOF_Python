@@ -1,6 +1,7 @@
 # 导入 pygame 和 config
 import pygame
 
+from src.characters.Characters import Characters
 from src.configure import constants
 from src.gameEvent.GameEvent import GameEvent
 from src.mediaLibraryManager.MediaLibraryManager import MediaLibrayManager
@@ -42,10 +43,8 @@ class KOF:
         # 在队列中添加 开始菜单界面
         self.eventsManager.postEvent(self.eventsManager.getEvent(constants.ST_STRAT, {}))
 
-        # 创建精灵组
-        group = pygame.sprite.Group()
-        # 向组内添加一个精灵
-        group.add(sprite_one)
+        s1 = Characters(self, "Ashkofxii", (50, 50))
+        self.screen.blit(s1.pic, s1.rect)
 
         # 运行结束标记符号
         running = True
@@ -56,10 +55,10 @@ class KOF:
                 # 如果按下了退出按钮
                 if event.type == pygame.QUIT:
                     running = False
-                if event.type == constants.ST_STRAT:
-                    nowScene = startM
-                if event.type == constants.ST_NEXT:
-                    nowScene = choose
-                    choose = ChooseChar(self)
-                nowScene.event(event)
+                # if event.type == constants.ST_STRAT:
+                #     nowScene = startM
+                # if event.type == constants.ST_NEXT:
+                #     nowScene = choose
+                #     choose = ChooseChar(self)
+                # nowScene.event(event)
             pygame.display.update()

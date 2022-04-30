@@ -1,7 +1,9 @@
 import pygame.draw
 
+from src.scene.scene import Scene
 
-class startMenu:
+
+class startMenu(Scene):
     def __init__(self, screen, config):
         self.screen = screen
         self.config = config

@@ -1,5 +1,15 @@
-class chooseChar:
+from src.scene.scene import Scene
+
+
+class chooseChar(Scene):
+    """
+    chooseChar 选择角色类，完成所有选择角色的事物
+    """
+
     def __init__(self):
+        pass
+
+    def event(self, event):
         pass
 
     def BG_Display(self):
@@ -21,7 +31,4 @@ class chooseChar:
         pass
 
     def disStart(self):
-        pass
-
-    def event(self, event):
         pass

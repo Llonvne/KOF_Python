@@ -1,4 +1,6 @@
 # General
+.vs
+.idea
 .DS_Store
 .AppleDouble
 .LSOverride

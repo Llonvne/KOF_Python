@@ -39,3 +39,4 @@ class KOF:
                 if event.type == pygame.QUIT:
                     running = False
             pygame.display.flip()  # 更新屏幕内容
+

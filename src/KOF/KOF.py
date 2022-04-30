@@ -42,6 +42,11 @@ class KOF:
         # 在队列中添加 开始菜单界面
         self.eventsManager.postEvent(self.eventsManager.getEvent(constants.ST_STRAT, {}))
 
+        # 创建精灵组
+        group = pygame.sprite.Group()
+        # 向组内添加一个精灵
+        group.add(sprite_one)
+
         # 运行结束标记符号
         running = True
         while running:
@@ -57,4 +62,4 @@ class KOF:
                     nowScene = choose
                     choose = ChooseChar(self)
                 nowScene.event(event)
-            pygame.display.flip()  # 更新屏幕内容
+            pygame.display.update()

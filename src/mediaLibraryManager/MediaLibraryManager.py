@@ -1,4 +1,6 @@
 import os
+
+from src.configure import constants
 from src.mediaLibraryManager import utility
 from src.mediaLibraryManager.Music.MusicHandle import MusicHandle
 from src.mediaLibraryManager.Pic.PicHandle import PicHandle
@@ -6,32 +8,32 @@ from src.mediaLibraryManager.utility import getFilenameInsideFolder, getFileSuff
 
 
 class MediaLibrayManager:
-    def __init__(self, configure):
+    def __init__(self, KOF):
         """
         加载所有图片，以PicHandle类保存在 PicLibrary
         加载所有音乐，以MusicHandle类保存在 MusicLibrary
         初始化BGMService
         """
         # 保存 configure 引用
-        self.configure = configure
+        self.KOF = KOF
 
         # 加载所有图片
         self.PicLibrary = dict()
         # 获得所有文件路径 filepath -> filename dict
-        pics_path = utility.get_files(os.path.join(configure.mediaLibraryRoot, 'Pic'))
+        pics_path = utility.get_files(os.path.join(constants.mediaLibraryRoot, 'Pic'))
         # 对于每一个路径 和 文件名来说
         for path, name in pics_path.items():
             # 如果他的后缀满足要求
-            if utility.getFileSuffix(name) in configure.ALLOWED_IMAGE_EXTENSIONS:
+            if utility.getFileSuffix(name) in constants.ALLOWED_IMAGE_EXTENSIONS:
                 # 生成 PicHandle 并且添加映射
                 self.PicLibrary[getFileName(name)] = PicHandle(path)
         # 加载所有声音
         self.MusicLibrary = dict()
         # 获得所有文件路径 filepaths
-        musics_path = utility.get_files(os.path.join(configure.mediaLibraryRoot, 'Music'))
+        musics_path = utility.get_files(os.path.join(constants.mediaLibraryRoot, 'Music'))
         for path, name in musics_path.items():
             # 如果他的后缀满足要求
-            if utility.getFileSuffix(name) in configure.ALLOWED_MUSIC_EXTENSIONS:
+            if utility.getFileSuffix(name) in constants.ALLOWED_MUSIC_EXTENSIONS:
                 # 生成 PicHandle 并且添加映射
                 self.MusicLibrary[getFileName(name)] = MusicHandle(path)
         pass
@@ -40,7 +42,7 @@ class MediaLibrayManager:
         """
         返回 screen_logo 以 PicHandle
         """
-        return self.PicLibrary[self.configure.logo_name]
+        return self.PicLibrary[constants.logo_name]
 
     def getPicFromPath(self, path: str) -> dict[str, PicHandle]:
         """
@@ -55,7 +57,7 @@ class MediaLibrayManager:
             # 拼接前缀
             pic_path = os.path.join(path, pic)
             # 如果是文件夹，且后缀满足规范
-            if os.path.isfile(pic_path) and getFileSuffix(pic_path) in self.configure.ALLOWED_IMAGE_EXTENSIONS:
+            if os.path.isfile(pic_path) and getFileSuffix(pic_path) in constants.ALLOWED_IMAGE_EXTENSIONS:
                 # 创建 PicHandle 对象 并建立文件名到 PicHandle 的映射
                 PicLibrary[getFileName(pic)] = PicHandle(pic_path)
         # 返回 PicHandle 集合

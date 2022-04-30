@@ -1,6 +1,5 @@
 import pygame
 
-from src import events
 from src.mediaLibraryManager import MediaLibraryManager
 
 
@@ -16,7 +15,7 @@ class BGMService:
         传入 MusicHandle 列表，初始化BGM队列
         """
         self.mediaLibraryManager = mediaLibraryManager
-        pygame.mixer.music.set_endevent(events.MUSIC_END)
+        # pygame.mixer.music.set_endevent(events.MUSIC_END)
 
     def play(self, musicName):
         """

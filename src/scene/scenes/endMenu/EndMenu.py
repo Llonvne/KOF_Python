@@ -20,6 +20,6 @@ class EndMenu(Scene):
         pass
 
     def event(self, event):
-        if event == events.ED_PLAY:
+        if event.type == events.ED_PLAY:
             self.BGMandBG()
         pass

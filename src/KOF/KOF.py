@@ -5,6 +5,7 @@ from src.configure import constants
 from src.gameEvent.GameEvent import GameEvent
 from src.mediaLibraryManager.MediaLibraryManager import MediaLibrayManager
 from src.mediaLibraryManager.Music.BGMService import BGMService
+from src.scene.scenes.ChooseChar.ChooseChar import ChooseChar
 from src.scene.scenes.startMenu.StartMenu import startMenu
 
 
@@ -28,7 +29,7 @@ class KOF:
 
     def run(self):
 
-        startM = None
+        startM = startMenu(self)
         choose = None
         battleM = None
         endM = None
@@ -42,13 +43,18 @@ class KOF:
             # 事件过滤
             # pygame.event.set_allowed(None)
             for event in pygame.event.get():
-                print(event)
                 # 如果按下了退出按钮
                 if event.type == pygame.QUIT:
                     running = False
                 if event.type == constants.ST_STRAT:
                     if startM is None:
                         startM = startMenu(self)
-                    startM.event(event.type)
+                    nowScene = startM
+                if event.type == constants.ST_NEXT:
+                    nowScene = choose
+                    if choose is None:
+                        choose = ChooseChar(self)
+                if self.eventsManager.isCustom(event):
+                    nowScene.event(event)
 
             pygame.display.flip()  # 更新屏幕内容

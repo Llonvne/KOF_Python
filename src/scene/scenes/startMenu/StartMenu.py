@@ -21,7 +21,7 @@ class startMenu(Scene):
         pass
 
     def event(self, event):
-        if event == constants.ST_STRAT:
+        if event.type == constants.ST_STRAT:
             self.display()
         pass
 

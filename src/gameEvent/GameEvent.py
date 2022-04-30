@@ -1,12 +1,19 @@
 import abc
 import pygame
 
+
 class GameEvent(metaclass=abc.ABCMeta):
     def __init__(self):
+        self.custom_event = set()
         pass
 
-    @staticmethod
-    def getEvent(uniqueID: int, message: dict) -> pygame.event.Event:
+    def isCustom(self, event: pygame.event.Event) -> bool:
+        if event is None:
+            return False
+        return event.type in self.custom_event
+
+    def getEvent(self, uniqueID: int, message: dict) -> pygame.event.Event:
+        self.custom_event.add(uniqueID)
         return pygame.event.Event(uniqueID, message)
 
     @staticmethod

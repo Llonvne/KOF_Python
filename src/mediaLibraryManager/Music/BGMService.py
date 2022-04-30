@@ -15,7 +15,8 @@ class BGMService:
         """
         传入 MusicHandle 列表，初始化BGM队列
         """
-        pygame.mixer.music.load(mediaLibraryManager.MusicLibrary['BGM1'].music_path)
+        pygame.mixer.init()
+        pygame.mixer.music.load("E:\KOF_Python\MediaLibrary\Music\BGM1.mp3")
         pygame.mixer.music.set_endevent(events.MUSIC_END)
 
     def play(self):

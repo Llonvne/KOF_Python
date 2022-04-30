@@ -4,7 +4,10 @@ from src import events
 from src.scene.scene import Scene
 
 
-class endMenu(Scene):
+class EndMenu(Scene):
+    """
+    endMenu 类 实现结束界面的控制
+    """
     def __init__(self, screen, config):
         self.screen = screen
         self.config = config

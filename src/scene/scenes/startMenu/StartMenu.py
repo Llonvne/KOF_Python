@@ -15,6 +15,7 @@ class startMenu(Scene):
         self.KOF.screen.blit(Background, (0, 0))
         self.KOF.screen.blit(Gobutton, (100, 50))
         self.KOF.screen.blit(Gif1, (300, 100))
+        pygame.display.flip()  # 更新屏幕内容
         pass
 
     def clear(self):
@@ -23,6 +24,8 @@ class startMenu(Scene):
     def event(self, event):
         if event.type == constants.ST_STRAT:
             self.display()
+            pygame.time.delay(3000)
+            self.next()
         pass
 
     def next(self):

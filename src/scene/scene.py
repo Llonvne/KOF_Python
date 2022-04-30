@@ -18,3 +18,7 @@ class Scene(metaclass=abc.ABCMeta):
         event 抽象函数，用于 KOF 传入 event 处理
         """
         pass
+
+    def clear(self):
+        self.KOF.screen.fill((0, 0, 0))
+        self.KOF.bgmService.pause()

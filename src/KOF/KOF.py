@@ -5,7 +5,10 @@ from src.configure import constants
 from src.gameEvent.GameEvent import GameEvent
 from src.mediaLibraryManager.MediaLibraryManager import MediaLibrayManager
 from src.mediaLibraryManager.Music.BGMService import BGMService
+from src.scene.scene import Scene
 from src.scene.scenes.ChooseChar.ChooseChar import ChooseChar
+from src.scene.scenes.battle.Battle import Battle
+from src.scene.scenes.endMenu.EndMenu import EndMenu
 from src.scene.scenes.startMenu.StartMenu import startMenu
 
 
@@ -30,9 +33,11 @@ class KOF:
     def run(self):
 
         startM = startMenu(self)
-        choose = None
-        battleM = None
-        endM = None
+        choose = ChooseChar(self)
+        battleM = Battle(self)
+        endM = EndMenu(self)
+
+        nowScene: Scene = startM
 
         # 在队列中添加 开始菜单界面
         self.eventsManager.postEvent(self.eventsManager.getEvent(constants.ST_STRAT, {}))
@@ -47,13 +52,10 @@ class KOF:
                 if event.type == pygame.QUIT:
                     running = False
                 if event.type == constants.ST_STRAT:
-                    if startM is None:
-                        startM = startMenu(self)
                     nowScene = startM
                 if event.type == constants.ST_NEXT:
                     nowScene = choose
-                    if choose is None:
-                        choose = ChooseChar(self)
+                    choose = ChooseChar(self)
                 if self.eventsManager.isCustom(event):
                     nowScene.event(event)
 

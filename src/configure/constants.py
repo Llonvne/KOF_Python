@@ -1,4 +1,5 @@
 import os
+import pygame
 
 # 指定允许的图片后缀
 ALLOWED_IMAGE_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
@@ -18,3 +19,9 @@ screen_size = (1280, 720)
 
 # Winner Song
 winnerSong = "BGM31"
+
+# 事件 uniqueID
+DIFF = 10000
+uniqueID_START = pygame.USEREVENT + 1
+ST_STRAT = uniqueID_START + DIFF
+ST_NEXT = uniqueID_START + DIFF + 1

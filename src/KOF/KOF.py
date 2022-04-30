@@ -2,8 +2,10 @@
 import pygame
 
 from src.configure import constants
+from src.gameEvent.GameEvent import GameEvent
 from src.mediaLibraryManager.MediaLibraryManager import MediaLibrayManager
 from src.mediaLibraryManager.Music.BGMService import BGMService
+from src.scene.scenes.startMenu.StartMenu import startMenu
 
 
 class KOF:
@@ -20,6 +22,9 @@ class KOF:
         self.screen = pygame.display.set_mode(constants.screen_size)
         # 初始化BGM服务
         self.bgmService = BGMService(self.mediaLibrary)
+        # self.bgmService.play("BGM1")
+        # 建立事件管理器
+        self.eventsManager = GameEvent()
 
     def run(self):
 
@@ -27,6 +32,9 @@ class KOF:
         choose = None
         battleM = None
         endM = None
+
+        # 在队列中添加 开始菜单界面
+        self.eventsManager.postEvent(self.eventsManager.getEvent(constants.ST_STRAT, {}))
 
         # 运行结束标记符号
         running = True
@@ -38,5 +46,9 @@ class KOF:
                 # 如果按下了退出按钮
                 if event.type == pygame.QUIT:
                     running = False
-            pygame.display.flip()  # 更新屏幕内容
+                if event.type == constants.ST_STRAT:
+                    if startM is None:
+                        startM = startMenu(self)
+                    startM.event(event.type)
 
+            pygame.display.flip()  # 更新屏幕内容
